@@ -99,7 +99,7 @@ function BoxCard({ box }: { box: Box }) {
             alt={box.name}
             fill
             sizes="(max-width: 768px) 288px, 384px"
-            className="object-cover transition-transform duration-500 group-hover:scale-105"
+            className="object-contain transition-transform duration-500 group-hover:scale-[1.03] p-4"
           />
         </div>
 
