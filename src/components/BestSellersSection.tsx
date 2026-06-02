@@ -124,8 +124,8 @@ function BoxCard({ box }: { box: Box }) {
             )}
           </div>
           <button
-            className="mt-3 w-full py-2.5 px-4 font-semibold text-sm uppercase tracking-wider transition-opacity hover:opacity-80"
-            style={{ backgroundColor: '#4B010F', color: '#FFFCEE' }}
+            className="mt-3 w-full py-2.5 px-4 font-semibold text-sm uppercase tracking-wider transition-opacity hover:opacity-80 border border-[#4B010F]"
+            style={{ backgroundColor: '#FFFCEE', color: '#4B010F' }}
           >
             {box.featured ? 'اطلب الآن' : 'Add to Cart'}
           </button>
