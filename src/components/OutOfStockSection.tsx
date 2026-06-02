@@ -24,7 +24,7 @@ interface OutOfStockProduct {
 function ProductCard({ product }: { product: OutOfStockProduct }) {
   return (
     <div className="flex flex-col">
-      <div className="relative aspect-square bg-[#f5f5f5] overflow-hidden">
+      <div className="relative aspect-square bg-[#F0EAD6] overflow-hidden">
         <Image
           src={product.image}
           alt={product.name}
@@ -37,11 +37,11 @@ function ProductCard({ product }: { product: OutOfStockProduct }) {
         </span>
       </div>
       <div className="mt-3 flex flex-col gap-1">
-        <p className="text-sm font-medium text-black leading-snug">{product.name}</p>
-        <p className="text-sm text-[#555]">{product.price}</p>
+        <p className="text-sm font-medium text-[#4B010F] leading-snug">{product.name}</p>
+        <p className="text-sm text-[#7A4040]">{product.price}</p>
         <button
           type="button"
-          className="mt-2 w-full border border-black bg-white text-black text-xs font-semibold uppercase tracking-wider py-2 px-4 hover:bg-black hover:text-white transition-colors duration-200"
+          className="mt-2 w-full border border-[#4B010F] bg-[#FFFCEE] text-[#4B010F] text-xs font-semibold uppercase tracking-wider py-2 px-4 hover:bg-[#4B010F] hover:text-[#FFFCEE] transition-colors duration-200"
         >
           Notify Me
         </button>
@@ -52,16 +52,16 @@ function ProductCard({ product }: { product: OutOfStockProduct }) {
 
 export function OutOfStockSection() {
   return (
-    <section className="bg-[#fafafa] px-6 pt-16 pb-12">
+    <section className="bg-[#F5F0DC] px-6 pt-16 pb-12">
       <div className="max-w-7xl mx-auto">
         <div className="mb-10">
-          <h2 className="text-3xl font-bold uppercase text-black tracking-tight">
+          <h2 className="text-3xl font-bold uppercase text-[#4B010F] tracking-tight">
             OUT OF STOCK
           </h2>
-          <p className="mt-2 text-sm italic text-[#888]">
+          <p className="mt-2 text-sm italic text-[#7A4040]">
             SOLD OUT. IT&apos;S OKAY, MAYBE THEY WILL BE RESTOCKED. MAYBEEEE
           </p>
-          <p className="mt-1 text-sm text-[#aaa]">
+          <p className="mt-1 text-sm text-[#7A4040]">
             They loved it a little too much. Restocking soon.
           </p>
         </div>

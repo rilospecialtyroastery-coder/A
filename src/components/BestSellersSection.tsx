@@ -173,10 +173,10 @@ export function BestSellersSection() {
           {/* Right arrow */}
           <button
             onClick={() => scroll('right')}
-            className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 z-10 flex items-center justify-center w-10 h-10 rounded-full bg-white border border-gray-200 shadow-sm hover:bg-gray-50 transition-colors"
+            className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 z-10 flex items-center justify-center w-10 h-10 rounded-full bg-[#FFFCEE] border border-[#D9D0B0] shadow-sm hover:bg-[#F0EAD6] transition-colors"
             aria-label="Scroll right"
           >
-            <ChevronRight className="w-5 h-5 text-black" />
+            <ChevronRight className="w-5 h-5 text-[#4B010F]" />
           </button>
         </div>
       </div>

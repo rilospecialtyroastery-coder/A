@@ -14,13 +14,13 @@ const partners = [
 
 export function BrandPartnersSection() {
   return (
-    <section className="bg-white px-6 py-16">
+    <section className="bg-[#FFFCEE] px-6 py-16">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-12">
-          <h2 className="text-3xl font-bold uppercase text-black tracking-tight">
+          <h2 className="text-3xl font-bold uppercase text-[#4B010F] tracking-tight">
             WE GOT THEM
           </h2>
-          <p className="mt-2 text-sm text-[#888]">Our roasting partners</p>
+          <p className="mt-2 text-sm text-[#7A4040]">Our roasting partners</p>
         </div>
 
         <div className="grid grid-cols-3 md:grid-cols-6 gap-8 items-center justify-items-center">

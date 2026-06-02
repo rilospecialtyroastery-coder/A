@@ -46,7 +46,7 @@ export function Footer() {
   }
 
   return (
-    <footer className="bg-[#fafafa] border-t border-[#e5e5e5]">
+    <footer className="bg-[#F5F0DC] border-t border-[#D9D0B0]">
       <div className="max-w-7xl mx-auto px-6 pt-12 pb-6">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 mb-10">
           {/* Col 1: Logo + tagline */}
@@ -60,14 +60,14 @@ export function Footer() {
                 className="object-contain h-9 w-auto"
               />
             </Link>
-            <p className="text-sm text-[#666] leading-relaxed">
+            <p className="text-sm text-[#7A4040] leading-relaxed">
               You don&apos;t need to get your life together. Just your coffee order.
             </p>
           </div>
 
           {/* Col 2: Quick Links */}
           <div>
-            <h3 className="text-[14px] font-bold uppercase tracking-[0.05em] text-black mb-4">
+            <h3 className="text-[14px] font-bold uppercase tracking-[0.05em] text-[#4B010F] mb-4">
               Quick Links
             </h3>
             <ul className="flex flex-col gap-2">
@@ -75,7 +75,7 @@ export function Footer() {
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="text-[14px] text-[#444] hover:text-black transition-colors duration-150"
+                    className="text-[14px] text-[#7A4040] hover:text-[#4B010F] transition-colors duration-150"
                   >
                     {link.label}
                   </Link>
@@ -86,7 +86,7 @@ export function Footer() {
 
           {/* Col 3: Newsletter */}
           <div>
-            <h3 className="text-[14px] font-bold uppercase tracking-[0.05em] text-black mb-4">
+            <h3 className="text-[14px] font-bold uppercase tracking-[0.05em] text-[#4B010F] mb-4">
               Subscribe to our emails
             </h3>
             <form onSubmit={handleSubscribe} className="flex">
@@ -96,11 +96,11 @@ export function Footer() {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="Email address"
-                className="flex-1 border border-[#ccc] px-[14px] py-[10px] text-[14px] text-black placeholder-[#aaa] outline-none focus:border-black transition-colors min-w-0"
+                className="flex-1 border border-[#D9D0B0] px-[14px] py-[10px] text-[14px] text-[#4B010F] placeholder-[#B08080] outline-none focus:border-[#4B010F] transition-colors min-w-0"
               />
               <button
                 type="submit"
-                className="bg-black text-white px-5 py-[10px] text-[14px] font-medium whitespace-nowrap hover:bg-[#222] transition-colors duration-150 border border-black"
+                className="bg-[#4B010F] text-[#FFFCEE] px-5 py-[10px] text-[14px] font-medium whitespace-nowrap hover:bg-[#3A000B] transition-colors duration-150 border border-[#4B010F]"
               >
                 Subscribe
               </button>
@@ -109,7 +109,7 @@ export function Footer() {
 
           {/* Col 4: Social links */}
           <div>
-            <h3 className="text-[14px] font-bold uppercase tracking-[0.05em] text-black mb-4">
+            <h3 className="text-[14px] font-bold uppercase tracking-[0.05em] text-[#4B010F] mb-4">
               Follow Us
             </h3>
             <div className="flex flex-col gap-3">
@@ -117,7 +117,7 @@ export function Footer() {
                 href="https://instagram.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-2 text-[14px] text-[#444] hover:text-black transition-colors duration-150"
+                className="flex items-center gap-2 text-[14px] text-[#7A4040] hover:text-[#4B010F] transition-colors duration-150"
               >
                 <InstagramIcon size={18} />
                 <span>Instagram</span>
@@ -126,7 +126,7 @@ export function Footer() {
                 href="https://tiktok.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-2 text-[14px] text-[#444] hover:text-black transition-colors duration-150"
+                className="flex items-center gap-2 text-[14px] text-[#7A4040] hover:text-[#4B010F] transition-colors duration-150"
               >
                 <Music2 size={18} />
                 <span>TikTok</span>
@@ -135,7 +135,7 @@ export function Footer() {
                 href="https://wa.me"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-2 text-[14px] text-[#444] hover:text-black transition-colors duration-150"
+                className="flex items-center gap-2 text-[14px] text-[#7A4040] hover:text-[#4B010F] transition-colors duration-150"
               >
                 <MessageCircle size={18} />
                 <span>WhatsApp</span>
@@ -145,16 +145,16 @@ export function Footer() {
         </div>
 
         {/* Divider */}
-        <div className="border-t border-[#e5e5e5] my-6" />
+        <div className="border-t border-[#D9D0B0] my-6" />
 
         {/* Bottom row */}
-        <div className="flex flex-col sm:flex-row items-center justify-between gap-4 text-[13px] text-[#888]">
+        <div className="flex flex-col sm:flex-row items-center justify-between gap-4 text-[13px] text-[#7A4040]">
           <span>© 2024 RSTR Coffee Trading</span>
           <div className="flex items-center gap-3 flex-wrap justify-center">
             {paymentMethods.map((method) => (
               <span
                 key={method}
-                className="border border-[#ddd] rounded px-2 py-0.5 text-[12px] text-[#555] bg-white"
+                className="border border-[#D9D0B0] rounded px-2 py-0.5 text-[12px] text-[#7A4040] bg-[#FFFCEE]"
               >
                 {method}
               </span>
@@ -163,7 +163,7 @@ export function Footer() {
           <div className="flex items-center gap-1">
             <span>🇦🇪</span>
             <select
-              className="text-[13px] text-[#555] bg-transparent border-none outline-none cursor-pointer"
+              className="text-[13px] text-[#7A4040] bg-transparent border-none outline-none cursor-pointer"
               defaultValue="UAE"
             >
               <option value="UAE">UAE</option>
