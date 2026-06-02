@@ -1361,3 +1361,46 @@ p {
   background: #000000;
   color: #ffffff;
 }
+
+/* =============================================================================
+   BRAND OVERRIDES — Force RILO colors on Feather theme elements
+   ============================================================================= */
+
+/* Announcement Bar */
+.announcement-bar {
+  background-color: #4B010F !important;
+  color: #FFFCEE !important;
+}
+
+/* Header / Nav */
+header, .header {
+  background-color: #FFFCEE !important;
+}
+
+.header__heading-link,
+.header a,
+nav a {
+  color: #4B010F !important;
+}
+
+/* Hero Section */
+.hero, .banner {
+  background-color: #FFFCEE !important;
+}
+
+.hero h1, .hero h2,
+.banner__heading {
+  color: #4B010F !important;
+}
+
+.hero p, .banner__text {
+  color: #4B010F !important;
+}
+
+/* Buttons */
+.button, .btn,
+.shopify-payment-button button {
+  background-color: #4B010F !important;
+  color: #FFFCEE !important;
+  border-color: #4B010F !important;
+}
