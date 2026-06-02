@@ -64,7 +64,7 @@ function BestSellerCard({ product }: { product: BestSellerProduct }) {
         {/* Image container */}
         <div
           className="relative w-full rounded-sm overflow-hidden"
-          style={{ aspectRatio: '3/4', backgroundColor: '#f5f5f5' }}
+          style={{ aspectRatio: '3/4', backgroundColor: '#F0EAD6' }}
         >
           <Image
             src={product.image}
@@ -79,25 +79,25 @@ function BestSellerCard({ product }: { product: BestSellerProduct }) {
         <div className="pt-4 flex flex-col gap-1 flex-1">
           <h3
             className="font-bold uppercase tracking-wide leading-tight"
-            style={{ fontSize: '18px', color: '#000000' }}
+            style={{ fontSize: '18px', color: '#4B010F' }}
           >
             {product.name}
           </h3>
           <p
             className="italic leading-snug"
-            style={{ fontSize: '14px', color: '#444444' }}
+            style={{ fontSize: '14px', color: '#7A4040' }}
           >
             {product.tagline}
           </p>
           <p
             className="font-bold mt-1"
-            style={{ fontSize: '16px', color: '#000000' }}
+            style={{ fontSize: '16px', color: '#4B010F' }}
           >
             {product.price}
           </p>
           <button
             className="mt-3 w-full py-2.5 px-4 font-semibold text-sm uppercase tracking-wider transition-opacity hover:opacity-80 active:opacity-70"
-            style={{ backgroundColor: '#000000', color: '#ffffff' }}
+            style={{ backgroundColor: '#4B010F', color: '#FFFCEE' }}
             onClick={() => {
               // Cart integration hook
             }}
@@ -124,19 +124,19 @@ export function BestSellersSection() {
   };
 
   return (
-    <section className="w-full bg-white" style={{ paddingTop: '64px', paddingBottom: '64px' }}>
+    <section className="w-full bg-[#FFFCEE]" style={{ paddingTop: '64px', paddingBottom: '64px' }}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section header */}
         <div className="mb-10">
           <h2
             className="font-bold uppercase"
-            style={{ fontSize: 'clamp(1.75rem, 4vw, 2.5rem)', color: '#000000', letterSpacing: '0.02em' }}
+            style={{ fontSize: 'clamp(1.75rem, 4vw, 2.5rem)', color: '#4B010F', letterSpacing: '0.02em' }}
           >
             OUR BEST SELLERS
           </h2>
           <p
             className="mt-2 italic"
-            style={{ fontSize: '18px', color: '#666666' }}
+            style={{ fontSize: '18px', color: '#7A4040' }}
           >
             We&apos;re not here to eat spiders!
           </p>
@@ -147,10 +147,10 @@ export function BestSellersSection() {
           {/* Left arrow */}
           <button
             onClick={() => scroll('left')}
-            className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 z-10 flex items-center justify-center w-10 h-10 rounded-full bg-white border border-gray-200 shadow-sm hover:bg-gray-50 transition-colors"
+            className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 z-10 flex items-center justify-center w-10 h-10 rounded-full bg-[#FFFCEE] border border-[#D9D0B0] shadow-sm hover:bg-[#F0EAD6] transition-colors"
             aria-label="Scroll left"
           >
-            <ChevronLeft className="w-5 h-5 text-black" />
+            <ChevronLeft className="w-5 h-5 text-[#4B010F]" />
           </button>
 
           {/* Scrollable container */}

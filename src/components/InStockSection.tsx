@@ -32,14 +32,14 @@ function ProductCard({ product }: { product: Product }) {
   return (
     <div
       className={cn(
-        "group flex flex-col bg-white border border-[#e5e5e5] transition-shadow duration-200",
+        "group flex flex-col bg-[#FFFCEE] border border-[#D9D0B0] transition-shadow duration-200",
         "hover:shadow-md"
       )}
     >
       {/* Image */}
-      <div className="relative w-full aspect-square bg-[#f5f5f5] overflow-hidden">
+      <div className="relative w-full aspect-square bg-[#F0EAD6] overflow-hidden">
         {product.badge && (
-          <span className="absolute top-2 left-2 z-10 bg-black text-white text-[11px] font-semibold px-2 py-0.5 uppercase tracking-wide">
+          <span className="absolute top-2 left-2 z-10 bg-[#4B010F] text-[#FFFCEE] text-[11px] font-semibold px-2 py-0.5 uppercase tracking-wide">
             {product.badge}
           </span>
         )}
@@ -54,13 +54,13 @@ function ProductCard({ product }: { product: Product }) {
 
       {/* Info */}
       <div className="flex flex-col flex-1 p-3 gap-1">
-        <p className="text-[14px] font-semibold text-black leading-snug line-clamp-2">
+        <p className="text-[14px] font-semibold text-[#4B010F] leading-snug line-clamp-2">
           {product.name}
         </p>
         <div className="flex items-center gap-2 mt-0.5">
-          <span className="text-[14px] text-black">{product.price}</span>
+          <span className="text-[14px] text-[#4B010F]">{product.price}</span>
           {product.originalPrice && (
-            <span className="text-[14px] text-gray-400 line-through">
+            <span className="text-[14px] text-[#7A4040] line-through">
               {product.originalPrice}
             </span>
           )}
@@ -70,7 +70,7 @@ function ProductCard({ product }: { product: Product }) {
         <button
           type="button"
           className={cn(
-            "mt-auto w-full bg-black text-white text-[13px] font-medium py-[10px] px-3 mt-3",
+            "mt-auto w-full bg-[#4B010F] text-[#FFFCEE] text-[13px] font-medium py-[10px] px-3 mt-3",
             "transition-opacity duration-150 hover:opacity-80 cursor-pointer"
           )}
         >
@@ -83,15 +83,15 @@ function ProductCard({ product }: { product: Product }) {
 
 export function InStockSection() {
   return (
-    <section className="bg-white py-12">
+    <section className="bg-[#FFFCEE] py-12">
       {/* Promo banner */}
-      <div className="bg-[#f5f5f5] text-center text-[12px] font-medium text-black py-2 px-6 mb-8 tracking-wide">
+      <div className="bg-[#F0EAD6] text-center text-[12px] font-medium text-[#4B010F] py-2 px-6 mb-8 tracking-wide">
         MORE IS COMING ON THE WAYYY. INCLUDING THE SAMPLE BOX!
       </div>
 
       <div className="max-w-[1400px] mx-auto px-4">
         {/* Section heading */}
-        <h2 className="text-4xl font-bold text-black mb-8 lowercase">in stock!</h2>
+        <h2 className="text-4xl font-bold text-[#4B010F] mb-8 lowercase">in stock!</h2>
 
         {/* Grid — scrollable on mobile */}
         <div className="overflow-x-auto -mx-4 px-4 sm:overflow-x-visible sm:mx-0 sm:px-0">

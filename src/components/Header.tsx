@@ -6,7 +6,7 @@ export function Header() {
   return (
     <header
       className={cn(
-        "sticky top-0 z-50 bg-white border-b border-[#e5e5e5]",
+        "sticky top-0 z-50 bg-[#FFFCEE] border-b border-[#D9D0B0]",
         "h-[60px] flex items-center justify-between px-6"
       )}
     >
@@ -23,7 +23,7 @@ export function Header() {
       <nav className="flex items-center gap-4">
         <a
           href="/account/login"
-          className="text-sm text-black hover:underline cursor-pointer"
+          className="text-sm text-[#4B010F] hover:underline cursor-pointer"
         >
           Log in
         </a>
