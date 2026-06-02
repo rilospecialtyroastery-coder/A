@@ -2,110 +2,135 @@
 
 import Image from 'next/image';
 import { useRef } from 'react';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { ChevronLeft, ChevronRight, ArrowRight } from 'lucide-react';
 
-interface BestSellerProduct {
+interface Box {
   name: string;
   tagline: string;
   price: string;
+  originalPrice?: string;
   image: string;
   slug: string;
+  featured?: boolean;
 }
 
-const bestSellers: BestSellerProduct[] = [
+const boxes: Box[] = [
   {
-    name: 'Sleepyhead',
-    tagline: 'Rich enough to wake you up. Sweet enough to make you stay in bed...',
-    price: 'Dhs. 105.00',
-    image: '/images/sleepyhead.png',
-    slug: 'sleepyhead',
+    name: 'V60 Box',
+    tagline: 'كل اللي تحتاجه تبدأ رحلتك مع القهوة المفلترة — مختار بعناية.',
+    price: 'Dhs. 190.00',
+    originalPrice: 'Dhs. 205.00',
+    image: '/images/sample-box.png',
+    slug: 'v60-box',
+    featured: true,
   },
   {
-    name: 'TIRAMISU CRISIS',
-    tagline: 'Dessert in a cup. Amaretto sweetness, toffee warmth and black cherry...',
-    price: 'Dhs. 110.00',
-    image: '/images/tiramisu-crisis-2.png',
-    slug: 'tiramisu-crisis',
+    name: 'RILO BOX',
+    tagline: 'كولكشن كامل من أفضل حبوب RILO في صندوق واحد.',
+    price: 'Dhs. 165.00',
+    originalPrice: 'Dhs. 210.00',
+    image: '/images/drip-bag-set.png',
+    slug: 'rilo-box',
   },
   {
-    name: 'MR. RUM RAISIN',
-    tagline: 'Seductively rich and indulgently smooth, because some cups deserve...',
-    price: 'Dhs. 129.00',
-    image: '/images/mr-rum-raisin.png',
-    slug: 'mr-rum-raisin',
+    name: 'RILO Signature Box',
+    tagline: 'اختيار مميز يعكس هوية RILO — للي يعرف قيمة الكوب الصح.',
+    price: 'Dhs. 180.00',
+    originalPrice: 'Dhs. 200.00',
+    image: '/images/gift-card.png',
+    slug: 'coming-soon',
   },
   {
-    name: 'CAFEINA (TOBACO)',
-    tagline: 'Some cups play it safe. This one never did.',
-    price: 'Dhs. 105.00',
-    image: '/images/cafeina.png',
-    slug: 'cafeina-tobaco',
+    name: 'Fruity Bomb Box',
+    tagline: 'للي يحب القهوة الفاكهية — انفجار نكهات في كل شربة.',
+    price: 'Dhs. 170.00',
+    originalPrice: 'Dhs. 190.00',
+    image: '/images/zero-regrets.png',
+    slug: 'fruity-flavor-box',
   },
   {
-    name: 'Honduras Whiskey Aged',
-    tagline: "Some coffees are made. This one was aged. There's a difference.",
-    price: 'Dhs. 169.00',
-    image: '/images/honduras-whiskey.png',
-    slug: 'honduras-whiskey-aged',
+    name: 'Espresso Box',
+    tagline: 'قوة الإسبريسو بأرقى الحبوب المختارة — مضغوط وغني.',
+    price: 'Dhs. 185.00',
+    originalPrice: 'Dhs. 200.00',
+    image: '/images/rocky-road.jpg',
+    slug: 'espresso-box',
   },
   {
-    name: 'MILK MAN',
-    tagline: 'Rich, creamy and dangerously comforting. The coffee equivalent...',
-    price: 'Dhs. 89.00',
-    image: '/images/milkman.png',
-    slug: 'milk-man',
+    name: 'RILO Experience Box',
+    tagline: 'رحلة كاملة في عالم القهوة — أفضل تجربة نقدّمها.',
+    price: 'Dhs. 220.00',
+    originalPrice: 'Dhs. 270.00',
+    image: '/images/tiramisu-crisis.png',
+    slug: 'best-seller-box',
   },
 ];
 
-function BestSellerCard({ product }: { product: BestSellerProduct }) {
+function BoxCard({ box }: { box: Box }) {
   return (
-    <div className="flex-none w-72 md:w-80 snap-start">
-      <div className="flex flex-col h-full">
-        {/* Image container */}
+    <div className={`flex-none snap-start ${box.featured ? 'w-80 md:w-96' : 'w-72 md:w-80'}`}>
+      <a href={`/products/${box.slug}`} className="flex flex-col h-full group">
         <div
-          className="relative w-full rounded-sm overflow-hidden"
-          style={{ aspectRatio: '3/4', backgroundColor: '#F0EAD6' }}
+          className="relative w-full overflow-hidden"
+          style={{
+            aspectRatio: box.featured ? '3/4' : '4/5',
+            backgroundColor: '#F0EAD6',
+            border: box.featured ? '2px solid #4B010F' : '1px solid #D9D0B0',
+          }}
         >
+          {box.featured && (
+            <span
+              className="absolute top-3 left-3 z-10 text-[11px] font-bold uppercase tracking-widest px-2 py-1"
+              style={{ backgroundColor: '#4B010F', color: '#FFFCEE' }}
+            >
+              ⭐ مميز
+            </span>
+          )}
+          {box.originalPrice && (
+            <span
+              className="absolute top-3 right-3 z-10 text-[11px] font-bold uppercase tracking-wider px-2 py-1"
+              style={{ backgroundColor: '#FFFCEE', color: '#4B010F', border: '1px solid #4B010F' }}
+            >
+              Sale
+            </span>
+          )}
           <Image
-            src={product.image}
-            alt={product.name}
+            src={box.image}
+            alt={box.name}
             fill
-            sizes="(max-width: 768px) 288px, 320px"
-            className="object-contain"
+            sizes="(max-width: 768px) 288px, 384px"
+            className="object-cover transition-transform duration-500 group-hover:scale-105"
           />
         </div>
 
-        {/* Card content */}
         <div className="pt-4 flex flex-col gap-1 flex-1">
           <h3
             className="font-bold uppercase tracking-wide leading-tight"
-            style={{ fontSize: '18px', color: '#4B010F' }}
+            style={{ fontSize: box.featured ? '20px' : '16px', color: '#4B010F' }}
           >
-            {product.name}
+            {box.name}
           </h3>
-          <p
-            className="italic leading-snug"
-            style={{ fontSize: '14px', color: '#7A4040' }}
-          >
-            {product.tagline}
+          <p className="leading-snug" style={{ fontSize: '13px', color: '#7A4040' }}>
+            {box.tagline}
           </p>
-          <p
-            className="font-bold mt-1"
-            style={{ fontSize: '16px', color: '#4B010F' }}
-          >
-            {product.price}
-          </p>
+          <div className="flex items-baseline gap-2 mt-1">
+            <span className="font-bold" style={{ fontSize: '16px', color: '#4B010F' }}>
+              {box.price}
+            </span>
+            {box.originalPrice && (
+              <span className="line-through" style={{ fontSize: '13px', color: '#B08080' }}>
+                {box.originalPrice}
+              </span>
+            )}
+          </div>
           <button
-            className="mt-3 w-full py-2.5 px-4 font-semibold text-sm uppercase tracking-wider transition-opacity hover:opacity-80 active:opacity-70"
+            className="mt-3 w-full py-2.5 px-4 font-semibold text-sm uppercase tracking-wider transition-opacity hover:opacity-80"
             style={{ backgroundColor: '#4B010F', color: '#FFFCEE' }}
-            onClick={() => {
-              // Cart integration hook
-            }}
           >
-            Add to Cart
+            {box.featured ? 'اطلب الآن' : 'Add to Cart'}
           </button>
         </div>
-      </div>
+      </a>
     </div>
   );
 }
@@ -116,44 +141,45 @@ export function BestSellersSection() {
   const scroll = (direction: 'left' | 'right') => {
     const container = scrollRef.current;
     if (!container) return;
-    const cardWidth = 320 + 24; // card width + gap
-    container.scrollBy({
-      left: direction === 'right' ? cardWidth : -cardWidth,
-      behavior: 'smooth',
-    });
+    container.scrollBy({ left: direction === 'right' ? 340 : -340, behavior: 'smooth' });
   };
 
   return (
-    <section className="w-full bg-[#FFFCEE]" style={{ paddingTop: '64px', paddingBottom: '64px' }}>
+    <section className="w-full bg-[#F5F0DC]" style={{ paddingTop: '64px', paddingBottom: '64px' }}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section header */}
-        <div className="mb-10">
-          <h2
-            className="font-bold uppercase"
-            style={{ fontSize: 'clamp(1.75rem, 4vw, 2.5rem)', color: '#4B010F', letterSpacing: '0.02em' }}
+        {/* Header */}
+        <div className="flex items-end justify-between mb-10 flex-wrap gap-4">
+          <div>
+            <h2
+              className="font-black uppercase"
+              style={{ fontSize: 'clamp(1.75rem, 4vw, 2.5rem)', color: '#4B010F', letterSpacing: '-0.02em' }}
+            >
+              البوكسات
+            </h2>
+            <p className="mt-2" style={{ fontSize: '16px', color: '#7A4040' }}>
+              ابدأ رحلتك — كل بوكس مختار بعناية لتجربة لا تُنسى.
+            </p>
+          </div>
+          <a
+            href="/collections/rilo-box"
+            className="flex items-center gap-2 font-semibold text-sm uppercase tracking-wider transition-colors hover:opacity-70"
+            style={{ color: '#4B010F' }}
           >
-            OUR BEST SELLERS
-          </h2>
-          <p
-            className="mt-2 italic"
-            style={{ fontSize: '18px', color: '#7A4040' }}
-          >
-            We&apos;re not here to eat spiders!
-          </p>
+            شوف كل البوكسات
+            <ArrowRight size={16} />
+          </a>
         </div>
 
-        {/* Carousel wrapper */}
+        {/* Carousel */}
         <div className="relative">
-          {/* Left arrow */}
           <button
             onClick={() => scroll('left')}
-            className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 z-10 flex items-center justify-center w-10 h-10 rounded-full bg-[#FFFCEE] border border-[#D9D0B0] shadow-sm hover:bg-[#F0EAD6] transition-colors"
-            aria-label="Scroll left"
+            className="absolute left-0 top-1/3 -translate-y-1/2 -translate-x-4 z-10 flex items-center justify-center w-10 h-10 rounded-full bg-[#FFFCEE] border border-[#D9D0B0] shadow-sm hover:bg-[#F0EAD6] transition-colors hidden md:flex"
+            aria-label="السابق"
           >
             <ChevronLeft className="w-5 h-5 text-[#4B010F]" />
           </button>
 
-          {/* Scrollable container */}
           <div
             ref={scrollRef}
             className="flex gap-6 overflow-x-auto pb-4"
@@ -165,19 +191,30 @@ export function BestSellersSection() {
               scrollbarWidth: 'none',
             }}
           >
-            {bestSellers.map((product) => (
-              <BestSellerCard key={product.slug} product={product} />
+            {boxes.map((box) => (
+              <BoxCard key={box.slug} box={box} />
             ))}
           </div>
 
-          {/* Right arrow */}
           <button
             onClick={() => scroll('right')}
-            className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 z-10 flex items-center justify-center w-10 h-10 rounded-full bg-[#FFFCEE] border border-[#D9D0B0] shadow-sm hover:bg-[#F0EAD6] transition-colors"
-            aria-label="Scroll right"
+            className="absolute right-0 top-1/3 -translate-y-1/2 translate-x-4 z-10 flex items-center justify-center w-10 h-10 rounded-full bg-[#FFFCEE] border border-[#D9D0B0] shadow-sm hover:bg-[#F0EAD6] transition-colors hidden md:flex"
+            aria-label="التالي"
           >
             <ChevronRight className="w-5 h-5 text-[#4B010F]" />
           </button>
+        </div>
+
+        {/* CTA button bottom */}
+        <div className="mt-10 text-center">
+          <a
+            href="/collections/rilo-box"
+            className="inline-flex items-center gap-2 px-8 py-3 font-bold text-sm uppercase tracking-wider transition-opacity hover:opacity-80"
+            style={{ backgroundColor: '#4B010F', color: '#FFFCEE' }}
+          >
+            شوف جميع البوكسات
+            <ArrowRight size={16} />
+          </a>
         </div>
       </div>
     </section>
