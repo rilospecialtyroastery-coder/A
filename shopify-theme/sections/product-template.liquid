@@ -1,0 +1,66 @@
+{%- assign current_variant = product.selected_or_first_available_variant -%}
+
+<section class="product-page section-padding">
+  <div class="container">
+    <div class="product-layout">
+      <div class="product-gallery">
+        <div class="product-gallery__main">
+          <img id="product-main-image"
+               src="{{ product.featured_image | image_url: width: 800 }}"
+               alt="{{ product.featured_image.alt | escape }}"
+               class="product-gallery__main-img">
+        </div>
+        {%- if product.images.size > 1 -%}
+          <div class="product-gallery__thumbs">
+            {%- for image in product.images -%}
+              <img src="{{ image | image_url: width: 150 }}"
+                   alt="{{ image.alt | escape }}"
+                   class="product-gallery__thumb"
+                   onclick="document.getElementById('product-main-image').src='{{ image | image_url: width: 800 }}'">
+            {%- endfor -%}
+          </div>
+        {%- endif -%}
+      </div>
+      <div class="product-info">
+        <h1 class="product-title">{{ product.title }}</h1>
+        <p class="product-price" id="product-price">
+          {%- if current_variant.compare_at_price > current_variant.price -%}
+            <span class="price--sale">{{ current_variant.price | money }}</span>
+            <span class="price--compare">{{ current_variant.compare_at_price | money }}</span>
+          {%- else -%}
+            {{ current_variant.price | money }}
+          {%- endif -%}
+        </p>
+        {%- if product.description != blank -%}
+          <div class="product-description">{{ product.description }}</div>
+        {%- endif -%}
+        <form action="/cart/add" method="post" enctype="multipart/form-data" id="product-form">
+          {%- if product.variants.size > 1 -%}
+            <div class="product-variants">
+              <label for="variant-select">{{ product.options.first }}</label>
+              <select name="id" id="variant-select" class="variant-select">
+                {%- for variant in product.variants -%}
+                  <option value="{{ variant.id }}" {% if variant == current_variant %}selected{% endif %} {% unless variant.available %}disabled{% endunless %}>
+                    {{ variant.title }} — {{ variant.price | money }}
+                  </option>
+                {%- endfor -%}
+              </select>
+            </div>
+          {%- else -%}
+            <input type="hidden" name="id" value="{{ current_variant.id }}">
+          {%- endif -%}
+          <div class="product-qty">
+            <label for="qty">Quantity</label>
+            <input type="number" id="qty" name="quantity" value="1" min="1" class="qty-input">
+          </div>
+          {%- if current_variant.available -%}
+            <button type="submit" name="add" class="btn btn--primary btn--full">Add to Cart</button>
+          {%- else -%}
+            <button type="button" class="btn btn--outline btn--full" disabled>Sold Out</button>
+          {%- endif -%}
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+{% schema %}{ "name": "Product" }{% endschema %}

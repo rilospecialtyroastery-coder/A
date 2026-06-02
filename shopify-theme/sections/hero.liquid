@@ -1,0 +1,26 @@
+<section class="hero" {% if section.settings.bg_image != blank %}style="background-image: url('{{ section.settings.bg_image | image_url: width: 1440 }}'); background-size: cover; background-position: center;"{% endif %}>
+  <div class="hero__content">
+    <h1 class="hero__heading">{{ section.settings.heading | default: "Coffee worth coming back for." }}</h1>
+    {% if section.settings.subheading != blank %}
+      <p class="hero__subheading">{{ section.settings.subheading }}</p>
+    {% endif %}
+    {% if section.settings.btn_text != blank %}
+      <a href="{{ section.settings.btn_url | default: '/collections/luxury-coffee-beans' }}" class="btn btn--primary">
+        {{ section.settings.btn_text }}
+      </a>
+    {% endif %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Hero",
+  "settings": [
+    { "type": "image_picker", "id": "bg_image", "label": "Background image" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Coffee worth coming back for." },
+    { "type": "text", "id": "subheading", "label": "Subheading", "default": "Roasted with obsession. Delivered to your door." },
+    { "type": "text", "id": "btn_text", "label": "Button text", "default": "Shop Now" },
+    { "type": "url", "id": "btn_url", "label": "Button link" }
+  ]
+}
+{% endschema %}

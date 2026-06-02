@@ -1,0 +1,41 @@
+<section class="cart-page section-padding">
+  <div class="container container--narrow">
+    <h1 class="page-title">Your Cart</h1>
+    {%- if cart.item_count == 0 -%}
+      <div class="cart-empty">
+        <p>Your cart is empty.</p>
+        <a href="/collections/luxury-coffee-beans" class="btn btn--primary">Continue Shopping</a>
+      </div>
+    {%- else -%}
+      <form action="/cart" method="post">
+        <div class="cart-items">
+          {%- for item in cart.items -%}
+            <div class="cart-item">
+              <a href="{{ item.url }}">
+                <img src="{{ item.image | image_url: width: 120 }}" alt="{{ item.title | escape }}" class="cart-item__image">
+              </a>
+              <div class="cart-item__details">
+                <a href="{{ item.url }}" class="cart-item__title">{{ item.product.title }}</a>
+                {%- unless item.variant.title == 'Default Title' -%}
+                  <p class="cart-item__variant">{{ item.variant.title }}</p>
+                {%- endunless -%}
+                <p class="cart-item__price">{{ item.price | money }}</p>
+              </div>
+              <div class="cart-item__actions">
+                <input type="number" name="updates[]" value="{{ item.quantity }}" min="0" class="cart-item__qty">
+                <a href="/cart/change?id={{ item.key }}&quantity=0" class="cart-item__remove">Remove</a>
+              </div>
+              <p class="cart-item__line-price">{{ item.line_price | money }}</p>
+            </div>
+          {%- endfor -%}
+        </div>
+        <div class="cart-footer">
+          <p class="cart-total">Total: <strong>{{ cart.total_price | money }}</strong></p>
+          <button type="submit" name="update" class="btn btn--outline">Update Cart</button>
+          <a href="/checkout" class="btn btn--primary">Checkout</a>
+        </div>
+      </form>
+    {%- endif -%}
+  </div>
+</section>
+{% schema %}{ "name": "Cart" }{% endschema %}
