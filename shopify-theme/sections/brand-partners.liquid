@@ -1,0 +1,40 @@
+<section class="brand-partners section-padding">
+  <div class="container">
+    <h2 class="section-title section-title--centered">{{ section.settings.title | default: 'OUR PARTNERS' }}</h2>
+    <div class="partners-grid">
+      {%- for i in (1..section.settings.count) -%}
+        {%- assign logo_key = 'logo_' | append: i -%}
+        {%- assign link_key = 'link_' | append: i -%}
+        {%- if section.settings[logo_key] != blank -%}
+          <div class="partner-logo">
+            <a href="{{ section.settings[link_key] | default: '#' }}">
+              <img src="{{ section.settings[logo_key] | image_url: width: 200 }}" alt="Partner {{ i }}" loading="lazy">
+            </a>
+          </div>
+        {%- endif -%}
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Brand Partners",
+  "settings": [
+    { "type": "text", "id": "title", "label": "Title", "default": "OUR PARTNERS" },
+    { "type": "range", "id": "count", "min": 1, "max": 10, "step": 1, "default": 6, "label": "Number of partners" },
+    { "type": "image_picker", "id": "logo_1", "label": "Partner 1 logo" },
+    { "type": "url", "id": "link_1", "label": "Partner 1 link" },
+    { "type": "image_picker", "id": "logo_2", "label": "Partner 2 logo" },
+    { "type": "url", "id": "link_2", "label": "Partner 2 link" },
+    { "type": "image_picker", "id": "logo_3", "label": "Partner 3 logo" },
+    { "type": "url", "id": "link_3", "label": "Partner 3 link" },
+    { "type": "image_picker", "id": "logo_4", "label": "Partner 4 logo" },
+    { "type": "url", "id": "link_4", "label": "Partner 4 link" },
+    { "type": "image_picker", "id": "logo_5", "label": "Partner 5 logo" },
+    { "type": "url", "id": "link_5", "label": "Partner 5 link" },
+    { "type": "image_picker", "id": "logo_6", "label": "Partner 6 logo" },
+    { "type": "url", "id": "link_6", "label": "Partner 6 link" }
+  ]
+}
+{% endschema %}

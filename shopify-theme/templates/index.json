@@ -1,0 +1,9 @@
+{
+  "sections": {
+    "hero": { "type": "hero", "settings": {} },
+    "featured-products": { "type": "featured-collection", "settings": { "collection": "luxury-coffee-beans", "title": "our coffees", "limit": 12 } },
+    "best-sellers": { "type": "best-sellers", "settings": { "title": "OUR BEST SELLERS", "subtitle": "Hand-picked, obsessively roasted." } },
+    "brand-partners": { "type": "brand-partners", "settings": {} }
+  },
+  "order": ["hero", "featured-products", "best-sellers", "brand-partners"]
+}

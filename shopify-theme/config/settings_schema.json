@@ -1,0 +1,17 @@
+[
+  {
+    "name": "theme_info",
+    "theme_name": "RILO Style",
+    "theme_version": "1.0.0",
+    "theme_author": "RILO",
+    "theme_documentation_url": "https://riloroastery.com",
+    "theme_support_url": "https://riloroastery.com"
+  },
+  {
+    "name": "Colors",
+    "settings": [
+      { "type": "color", "id": "color_primary", "label": "Primary color", "default": "#000000" },
+      { "type": "color", "id": "color_background", "label": "Background color", "default": "#ffffff" }
+    ]
+  }
+]

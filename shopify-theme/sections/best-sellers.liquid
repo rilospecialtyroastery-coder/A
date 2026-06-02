@@ -1,0 +1,50 @@
+{%- assign bs_collection = collections['luxury-coffee-beans'] -%}
+
+<section class="best-sellers section-padding">
+  <div class="container">
+    <div class="best-sellers__header">
+      <h2 class="section-title">{{ section.settings.title | default: 'OUR BEST SELLERS' }}</h2>
+      {% if section.settings.subtitle != blank %}
+        <p class="section-subtitle">{{ section.settings.subtitle }}</p>
+      {% endif %}
+    </div>
+    <div class="best-sellers__track-wrapper">
+      <button class="carousel-btn carousel-btn--prev" onclick="scrollCarousel('best-sellers-track', -1)" aria-label="Previous">&#8592;</button>
+      <div class="best-sellers__track" id="best-sellers-track">
+        {%- for product in bs_collection.products limit: 8 -%}
+          <div class="best-seller-card">
+            <a href="{{ product.url }}" class="best-seller-card__image-wrap">
+              {%- if product.featured_image -%}
+                <img src="{{ product.featured_image | image_url: width: 600 }}" alt="{{ product.featured_image.alt | escape }}" loading="lazy" class="best-seller-card__image">
+              {%- endif -%}
+            </a>
+            <div class="best-seller-card__info">
+              <h3 class="best-seller-card__name">{{ product.title }}</h3>
+              <p class="best-seller-card__excerpt">{{ product.description | strip_html | truncate: 80 }}</p>
+              <p class="best-seller-card__price">
+                {%- if product.compare_at_price > product.price -%}
+                  <span class="price--sale">{{ product.price | money }}</span>
+                  <span class="price--compare">{{ product.compare_at_price | money }}</span>
+                {%- else -%}
+                  {{ product.price | money }}
+                {%- endif -%}
+              </p>
+              <a href="{{ product.url }}" class="btn btn--primary btn--sm">Add to Cart</a>
+            </div>
+          </div>
+        {%- endfor -%}
+      </div>
+      <button class="carousel-btn carousel-btn--next" onclick="scrollCarousel('best-sellers-track', 1)" aria-label="Next">&#8594;</button>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Best Sellers",
+  "settings": [
+    { "type": "text", "id": "title", "label": "Title", "default": "OUR BEST SELLERS" },
+    { "type": "text", "id": "subtitle", "label": "Subtitle", "default": "Hand-picked, obsessively roasted." }
+  ]
+}
+{% endschema %}
